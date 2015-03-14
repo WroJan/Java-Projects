@@ -12,6 +12,10 @@ import javax.swing.*;
 public class Notepad extends JFrame implements ActionListener
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JMenuBar bar;
 	JMenu mFile, mHelp;
 	JMenuItem iSave, iOpen, iExit, iAbout, iPrint;
@@ -142,6 +146,7 @@ public class Notepad extends JFrame implements ActionListener
 				File file = fc.getSelectedFile();
 				try
 				{
+					@SuppressWarnings("resource")
 					Scanner skaner = new Scanner(file);
 					while (skaner.hasNext())
 						notatnik.append(skaner.nextLine() + "\n");
@@ -160,6 +165,7 @@ public class Notepad extends JFrame implements ActionListener
 				try
 				{
 					PrintWriter pw = new PrintWriter(plik);
+					@SuppressWarnings("resource")
 					Scanner skanerSave = new Scanner(notatnik.getText());
 					while (skanerSave.hasNext())
 						pw.println(skanerSave.nextLine() + "\n");
